@@ -3,7 +3,7 @@ Convolutional Neural Networks using TensorFlow
 ==============================================
 
 This tutorial deals with training a classifier using convolutional
-neural networks. The source code is available at `this link <https://github.com/astorfi/TensorFlow-World/tree/master/Tutorials/3-neural_networks/convolutional-neural-network/>`_.
+neural networks. The source code is available at `this link <https://github.com/astorfi/TensorFlow-World/tree/master/codes/3-neural_networks/convolutional-neural-network/>`_.
 
 ------------
 Introduction
@@ -93,7 +93,7 @@ architecture schematic is as below:
 
    **Figure 1:** The general architecture of the network.
 
-   
+
 The image is depicted by
 `Tensorboard <https://www.tensorflow.org/get_started/summaries_and_tensorboard>`__
 as a visualization tool for TensorFlow. Later on in this tutorial the
@@ -121,9 +121,9 @@ is as below:
             end_points_collection = sc.name + '_end_points'
 
             # Collect outputs for conv2d and max_pool2d.
-            with tf.contrib.framework.arg_scope([tf.contrib.layers.conv2d, tf.contrib.layers.max_pool2d], 
+            with tf.contrib.framework.arg_scope([tf.contrib.layers.conv2d, tf.contrib.layers.max_pool2d],
             outputs_collections=end_points_collection):
-            
+
                 # Layer-1
                 net = tf.contrib.layers.conv2d(images, 32, [5,5], scope='conv1')
                 net = tf.contrib.layers.max_pool2d(net, [2, 2], 2, scope='pool1')
@@ -148,7 +148,7 @@ is as below:
                     logits = tf.squeeze(logits, [1, 2], name='fc4/squeezed')
                     end_points[sc.name + '/fc4'] = logits
                 return logits, end_points
- 
+
     def net_arg_scope(weight_decay=0.0005):
         #Defines the default network argument scope.
 
@@ -234,7 +234,7 @@ overall architecture of the convolution layer is as depicted below:
 .. figure:: https://github.com/astorfi/TensorFlow-World/blob/master/docs/_img/3-neural_network/convolutiona_neural_network/convlayer.png
    :scale: 30 %
    :align: center
-       
+
    **Figure 2:** The operations in convolutional layer.
 
 
@@ -327,7 +327,7 @@ The graph is explicitly defined in our experiments. The following
 script, panel by panel, shows the graph design of our experiments:
 
 .. code:: python
-     
+
     graph = tf.Graph()
     with graph.as_default():
 
@@ -350,7 +350,7 @@ script, panel by panel, shows the graph design of our experiments:
         label_place = tf.placeholder(tf.float32, shape=([None, FLAGS.num_classes]), name='gt')
         dropout_param = tf.placeholder(tf.float32)
 
-     
+
         # MODEL
         arg_scope = net.net_arg_scope(weight_decay=0.0005)
         with tf.contrib.framework.arg_scope(arg_scope):
@@ -369,7 +369,7 @@ script, panel by panel, shows the graph design of our experiments:
             # Accuracy calculation
             accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-     
+
         # Define optimizer by its default values
         optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
 
@@ -378,7 +378,7 @@ script, panel by panel, shows the graph design of our experiments:
             grads_and_vars = optimizer.compute_gradients(loss)
             train_op = optimizer.apply_gradients(grads_and_vars, global_step=global_step)
 
-     
+
         arr = np.random.randint(data.train.images.shape[0], size=(3,))
         tf.summary.image('images', data.train.images[arr], max_outputs=3,
                          collections=['per_epoch_train'])
@@ -518,7 +518,7 @@ session must be configured. The code is as below:
 
 .. code:: python
 
-     
+
     tensors_key = ['cost', 'accuracy', 'train_op', 'global_step', 'image_place', 'label_place', 'dropout_param',
                        'summary_train_op', 'summary_test_op', 'summary_epoch_train_op']
     tensors = [loss, accuracy, train_op, global_step, image_place, label_place, dropout_param, summary_train_op,
@@ -549,7 +549,7 @@ following script:
 
 .. code:: python
 
-     
+
     with sess.as_default():
         # Run the saver.
         # 'max_to_keep' flag determines the maximum number of models that the tensorflow save and keep. default by TensorFlow = 5.
@@ -566,7 +566,7 @@ following script:
                                  finetuning=FLAGS.fine_tuning,
                                  num_epochs=FLAGS.num_epochs, checkpoint_dir=FLAGS.checkpoint_dir,
                                  batch_size=FLAGS.batch_size)
-                                     
+
         train_evaluation.evaluation(sess, saver, tensors_dictionary, data,
                                checkpoint_dir=FLAGS.checkpoint_dir)
 
@@ -587,7 +587,7 @@ The training function is as below:
 
 .. code:: python
 
-     
+
     from __future__ import print_function
     import tensorflow as tf
     import numpy as np
@@ -777,7 +777,7 @@ for the train are depicted jointly as below:
 .. figure:: https://github.com/astorfi/TensorFlow-World/blob/master/docs/_img/3-neural_network/convolutiona_neural_network/loss_accuracy_train.png
    :scale: 50 %
    :align: center
-   
+
    **Figure 4:** The loss and accuracy curves for training.
 
 
@@ -787,7 +787,7 @@ following figure:
 .. figure:: https://github.com/astorfi/TensorFlow-World/blob/master/docs/_img/3-neural_network/convolutiona_neural_network/activation_fc4_train.png
    :scale: 50 %
    :align: center
-   
+
    **Figure 5:** The activation of the last layer.
 
 
@@ -799,7 +799,7 @@ as below:
 .. figure:: https://github.com/astorfi/TensorFlow-World/blob/master/docs/_img/3-neural_network/convolutiona_neural_network/histogram_fc4_train.png
    :scale: 50 %
    :align: center
-   
+
    **Figure 6:** The histogram summary of the last layer.
 
 
@@ -819,7 +819,7 @@ is as below:
 .. figure:: https://github.com/astorfi/TensorFlow-World/blob/master/docs/_img/3-neural_network/convolutiona_neural_network/terminal_training.png
    :scale: 50 %
    :align: center
-   
+
    **Figure 8:** Terminal scene in training phase.
 
 
@@ -854,4 +854,3 @@ in the sense of description. Some of the details about some
 TensorFlow(like summaries) and data-input-pipeline have been ignored for
 simplicity. We get back to them in the future posts. I hope you enjoyed
 it.
-
