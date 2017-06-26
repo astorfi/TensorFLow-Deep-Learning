@@ -6,10 +6,10 @@ Welcome to TensorFlow World
 
 The tutorials in this section is just a start for going into TensorFlow world. The source code is available at `this link`_.
 
-We using Tensorboard for visualizing the outcomes. TensorBoard is the graph visualization tools provided by TensorFlow. Using Google’s words: “The computations you'll use TensorFlow for - like training a massive deep neural network - can be complex and confusing. To make it easier to understand, debug, and optimize TensorFlow programs, we've included a suite of visualization tools called TensorBoard.” A simple Tensorboard implementation is used in this tutorial. 
+We using Tensorboard for visualizing the outcomes. TensorBoard is the graph visualization tools provided by TensorFlow. Using Google’s words: “The computations you'll use TensorFlow for - like training a massive deep neural network - can be complex and confusing. To make it easier to understand, debug, and optimize TensorFlow programs, we've included a suite of visualization tools called TensorBoard.” A simple Tensorboard implementation is used in this tutorial.
 
-**NOTE:*** 
-     
+**NOTE:***
+
      * The details of summary operations, Tensorboard and their advantages are beyond the scope of this tutorial and will be presented in more advanced tutorials.
 
 
@@ -20,7 +20,7 @@ Prepairing the environment
 At first we have to import the necessary libraries.
 
 .. code:: python
-    
+
        from __future__ import print_function
        import tensorflow as tf
        import os
@@ -28,7 +28,7 @@ At first we have to import the necessary libraries.
 Since we are aimed to use Tensorboard, we need a directory to store the information (the operations and their corresponding outputs if desired by the user). These information are exported to ``event files`` by TensorFlow. The even files can be transformed to visual data such that the user be able to evaluate the architecture and the operations. The ``path`` to store these even files is defined as below:
 
 .. code:: python
-    
+
        # The default path for saving event files is the same folder of this python file.
        tf.app.flags.DEFINE_string(
        'log_dir', os.path.dirname(os.path.abspath(__file__)) + '/logs',
@@ -64,7 +64,7 @@ Some basic math operations can be defined by TensorFlow:
      # Some basic operations
      x = tf.add(a, b, name="add")
      y = tf.div(a, b, name="divide")
-    
+
 The ``tf.`` operator dperforms the specific operation and the output will be a ``Tensor``. The attribute ``name="some_name"`` is defined for better Tensorboard visualization as we see later in this tutorial.
 
 -------------------
@@ -85,7 +85,7 @@ The ``seesion``, which is the environment for running the operations, is execute
     sess.close()
 
 The ``tf.summary.FileWriter`` is defined to write the summaries into ``event files``.The command of ``sess.run()`` must be used for evaluation of any ``Tensor`` otherwise the operation won't be executed. In the end by using the ``writer.close()``, the summary writer will be closed.
-    
+
 --------
 Results
 --------
@@ -108,4 +108,3 @@ If we run the Tensorboard using ``tensorboard --logdir="absolute/path/to/log_dir
    :align: center
 
    **Figure 1:** The TensorFlow Graph.
-
