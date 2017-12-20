@@ -132,9 +132,9 @@ Basics
 +----+---------------------+----------------------------------------------------------------------------------------+----------------------------------------------+
 | #  |       topic         |   Source Code                                                                          |                                              |
 +====+=====================+========================================================================================+==============================================+
-| 2  | *TensorFLow Basics* | `Basic Math Operations <basicmathsourcecode_>`_   / `IPython <ipythonbasicmath_>`_     |  `Documentation <Documentationbasicmath_>`_  |
+| 2  | *TensorFlow Basics* | `Basic Math Operations <basicmathsourcecode_>`_   / `IPython <ipythonbasicmath_>`_     |  `Documentation <Documentationbasicmath_>`_  |
 +----+---------------------+----------------------------------------------------------------------------------------+----------------------------------------------+
-| 3  | *TensorFLow Basics* | `TensorFlow Variables <variablssourcecode_>`_   / `IPython <ipythonvariabls_>`_        |  `Documentation <Documentationvariabls_>`_   |
+| 3  | *TensorFlow Basics* | `TensorFlow Variables <variablssourcecode_>`_   / `IPython <ipythonvariabls_>`_        |  `Documentation <Documentationvariabls_>`_   |
 +----+---------------------+----------------------------------------------------------------------------------------+----------------------------------------------+
 
 ==========================
