@@ -197,9 +197,6 @@ There are different types of variance-scaling initializers. The one we
 used in is the one proposed by the paper `Understanding the difficulty
 of training deep feedforward neural
 networks <http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf>`__
-and provided by the TensorFlow. is the one proposed by the paper
-`Understanding the difficulty of training deep feedforward neural
-networks <http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf>`__
 and provided by the TensorFlow.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
