@@ -78,7 +78,10 @@ The ``session``, which is the environment for running the operations, is execute
     # Run the session
     with tf.Session() as sess:
         writer = tf.summary.FileWriter(os.path.expanduser(FLAGS.log_dir), sess.graph)
-        print("output: ", sess.run(welcome))
+        print("a =", sess.run(a))
+        print("b =", sess.run(b))
+        print("a + b =", sess.run(x))
+        print("a/b =", sess.run(y))
 
     # Closing the writer.
     writer.close()
